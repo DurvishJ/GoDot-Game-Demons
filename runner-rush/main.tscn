@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ced2rtllaoiph"]
+
+[ext_resource type="Script" uid="uid://b3pe5ly0uccfr" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bcsggvwfhjlql" path="res://chatty_customer.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dnfhbtpeevx7g" path="res://player.tscn" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="4_272bh"]
+
+[node name="Main" type="Node" unique_id=1273300211]
+script = ExtResource("1_1bvp3")
+mob_scene = ExtResource("2_lquwl")
+
+[node name="Player" parent="." unique_id=668391075 instance=ExtResource("3_7mycd")]
+
+[node name="StartPosition" type="Marker2D" parent="." unique_id=1106211853]
+position = Vector2(240, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1387149393]
+position = Vector2(577, 322)
+scale = Vector2(0.6020833, 0.5972222)
+texture = ExtResource("4_272bh")

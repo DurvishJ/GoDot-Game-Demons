@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bcsggvwfhjlql"]
+
+[ext_resource type="Texture2D" uid="uid://ddacma7dyqjqn" path="res://Chatty customer #1.png" id="1_4xegt"]
+[ext_resource type="Script" uid="uid://dd5pl80mga114" path="res://chatty_customer.gd" id="1_4y430"]
+[ext_resource type="Texture2D" uid="uid://cfs0kyyd6lb55" path="res://Chatty customer #2.png" id="2_4y430"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_607gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4xegt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4y430")
+}],
+"loop": true,
+"name": &"ChattyCustomers",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcuoj"]
+size = Vector2(86, 263)
+
+[node name="ChattyCustomer" type="RigidBody2D" unique_id=369853220]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_4y430")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1654992600]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_607gn")
+animation = &"ChattyCustomers"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1680097066]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_wcuoj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1190816619]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
