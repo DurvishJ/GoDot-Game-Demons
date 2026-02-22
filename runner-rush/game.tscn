@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://42pymon2i4o6" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://bcsggvwfhjlql" path="res://chatty_customer.tscn" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dnfhbtpeevx7g" path="res://player.tscn" id="3_fc0e3"]
 
 [sub_resource type="Curve2D" id="Curve2D_7jktm"]
 _data = {
@@ -26,6 +27,10 @@ point_count = 11
 script = ExtResource("1_feb5d")
 mob_scene = ExtResource("2_fc0e3")
 
+[node name="Player" parent="." unique_id=668391075 instance=ExtResource("3_fc0e3")]
+position = Vector2(713, 489.99997)
+rotation = -1.5707964
+
 [node name="DeliveryTime" type="Timer" parent="." unique_id=834205061]
 one_shot = true
 
@@ -36,20 +41,25 @@ curve = SubResource("Curve2D_7jktm")
 [node name="ChattyCustomer1" type="Path2D" parent="." unique_id=2016967698]
 curve = SubResource("Curve2D_ryrav")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="ChattyCustomer1" unique_id=1826377938]
+[node name="ChattyCustomer1Location" type="PathFollow2D" parent="ChattyCustomer1" unique_id=1826377938]
 position = Vector2(96, 512)
 rotation = -1.5707964
 
 [node name="ChattyCustomer2" type="Path2D" parent="." unique_id=32154879]
 curve = SubResource("Curve2D_eow3j")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="ChattyCustomer2" unique_id=139637246]
+[node name="ChattyCustomer2Location" type="PathFollow2D" parent="ChattyCustomer2" unique_id=139637246]
 position = Vector2(672, 96)
 rotation = 1.5707964
 
+[node name="StartPosition" type="Marker2D" parent="." unique_id=1982337687]
+position = Vector2(22, 617)
+rotation = -1.5707964
+
 [node name="Background" type="TextureRect" parent="." unique_id=1828188576]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_80nbo")
 expand_mode = 1
+
+[connection signal="hit" from="Player" to="." method="game_over"]

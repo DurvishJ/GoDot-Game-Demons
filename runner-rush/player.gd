@@ -41,6 +41,5 @@ func start(pos):
 	position = pos
 	show() # This line makes the player visible!
 	$CollisionShape2D.disabled = false
-
-
+	
 	
