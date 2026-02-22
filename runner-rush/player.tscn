@@ -22,7 +22,7 @@ animations = [{
 radius = 88.89666
 height = 313.66153
 
-[node name="Player" type="Area2D" unique_id=668391075]
+[node name="Player" type="CharacterBody2D" unique_id=688400722]
 position = Vector2(22, 617)
 script = ExtResource("1_i3pqv")
 metadata/_edit_group_ = true
@@ -35,7 +35,5 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=173318968]
 position = Vector2(-1, 0)
 scale = Vector2(0.2, 0.2)
-skew = 0.10297442
+skew = 0.102974415
 shape = SubResource("CapsuleShape2D_hqtel")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

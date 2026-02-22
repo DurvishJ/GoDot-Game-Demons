@@ -1,45 +1,45 @@
-extends Area2D
+extends CharacterBody2D # 1. Change this line
+
 signal hit
 
-@export var speed = 150 # How fast the player will move (pixels/sec).
-var screen_size # Size of the game window.
+@export var speed = 150 
+var screen_size 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
+# 2. Use _physics_process for better collision handling
+func _physics_process(delta): 
+	var input_velocity = Vector2.ZERO 
 	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+		input_velocity.x += 1
 	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+		input_velocity.x -= 1
 	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
+		input_velocity.y += 1
 	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+		input_velocity.y -= 1
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+	if input_velocity.length() > 0:
+		# 3. Use the built-in 'velocity' property
+		velocity = input_velocity.normalized() * speed
 		$AnimatedSprite2D.play()
 	else:
+		velocity = Vector2.ZERO
 		$AnimatedSprite2D.stop()
 		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	# 4. Use move_and_slide() instead of position += ...
+	move_and_slide() 
 	
+	# Keep the player within the screen
+	global_position = global_position.clamp(Vector2.ZERO, screen_size)
+	
+	# Animation flipping code...
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		# See the note below about the following boolean assignment.
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
-	
 func start(pos):
-	position = pos
-	show() # This line makes the player visible!
-	$CollisionShape2D.disabled = false
-	
-	
+	global_position = pos # Moves player to the start point
+	show() # Makes player visible
+	$CollisionShape2D.disabled = false # Enables collision

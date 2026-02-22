@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="runner_rush"
-run/main_scene="uid://dnfhbtpeevx7g"
+run/main_scene="uid://ced2rtllaoiph"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
