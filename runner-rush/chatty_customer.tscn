@@ -22,18 +22,33 @@ animations = [{
 radius = 46.195633
 height = 270.32272
 
-[node name="ChattyCustomer" type="RigidBody2D" unique_id=639652523]
-position = Vector2(22, 617)
+[sub_resource type="Curve2D" id="Curve2D_4y430"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 96, 512, 0, 0, 0, 0, 96, 128, 0, 0, 0, 0, 296, 128, 0, 0, 0, 0, 296, 576, 0, 0, 0, 0, 480, 576, 0, 0, 0, 0, 480, 96, 0, 0, 0, 0, 480, 576, 0, 0, 0, 0, 296, 576, 0, 0, 0, 0, 296, 128, 0, 0, 0, 0, 96, 128, 0, 0, 0, 0, 96, 512)
+}
+point_count = 11
+
+[node name="ChattyCustomer" type="CharacterBody2D" unique_id=2016454221]
+position = Vector2(22, 616)
 collision_mask = 0
-gravity_scale = 0.0
 script = ExtResource("1_4y430")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=961495838]
+position = Vector2(95, -139.00002)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_8uwwj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067944616]
-position = Vector2(1, 0)
+position = Vector2(96, -139)
 scale = Vector2(0.2, 0.2)
-skew = -0.04886922
+skew = -0.048869252
 shape = SubResource("CapsuleShape2D_5o580")
+
+[node name="ChattyCustomer1" type="Path2D" parent="." unique_id=1533744653]
+position = Vector2(0, -649)
+curve = SubResource("Curve2D_4y430")
+script = ExtResource("1_4y430")
+
+[node name="ChattyCustomer1Location" type="PathFollow2D" parent="ChattyCustomer1" unique_id=1331617755]
+position = Vector2(96, 512)
+rotation = -1.5707964

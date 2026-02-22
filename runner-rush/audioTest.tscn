@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bb4saalreps27"]
+
+[ext_resource type="Script" uid="uid://dfvcrxf1encxq" path="res://audioTest.gd" id="1_cnehq"]
+[ext_resource type="AudioStream" uid="uid://drdo0bom3474a" path="res://freesound_community-game-over-arcade-6435.ogg" id="2_haleb"]
+
+[node name="Node" type="Node" unique_id=579410193]
+script = ExtResource("1_cnehq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1920698655]
+stream = ExtResource("2_haleb")

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnfhbtpeevx7g" path="res://player.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://tjgbsxsui0ym" path="res://chattyCustomer.tscn" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://drdo0bom3474a" path="res://freesound_community-game-over-arcade-6435.ogg" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(40, 421)
@@ -141,6 +142,10 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=272783121]
 position = Vector2(1116, 544)
 shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="LoseGame" type="AudioStreamPlayer2D" parent="." unique_id=1045999519]
+process_mode = 3
+stream = ExtResource("6_7mycd")
 
 [connection signal="hit" from="Chatty Customer" to="." method="_on_chatty_customer_hit"]
 [connection signal="timeout" from="DeliveryTime" to="." method="_on_delivery_time_timeout"]

@@ -14,4 +14,3 @@ func _process(delta: float) -> void:
 
 func body_entered(body: Node2D) -> void:
 	emit_signal("hit")
-	get_tree().paused = true

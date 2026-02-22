@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if elapsed_time >= 45:
+		$LoseGame.play()
 		gameOver.text = "You lose"
 		get_tree().paused = true
 	else:
@@ -26,6 +27,7 @@ func new_game():
 
 func _on_finish_body_entered(body: Node2D) -> void:
 	if elapsed_time > 45:
+		$LoseGame.play()
 		gameOver.text = "You lose"
 	else:
 		gameOver.text = "You win!"
@@ -33,5 +35,7 @@ func _on_finish_body_entered(body: Node2D) -> void:
 
 
 func _on_chatty_customer_hit() -> void:
+	$LoseGame.play()
 	gameOver.text = "You lose"
 	get_tree().paused = true
+	

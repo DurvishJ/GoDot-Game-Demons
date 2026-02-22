@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dy76s5285tnav"]
+
+[ext_resource type="Texture2D" uid="uid://0piqqhbrboei" path="res://Feeling energergized #1.png" id="1_tmkxu"]
+[ext_resource type="Texture2D" uid="uid://b1ouvnhbense4" path="res://Feeling energergized #2 (1).png" id="2_m870c"]
+[ext_resource type="Texture2D" uid="uid://dv0qp25o5myuw" path="res://Roller skates #1.png" id="3_ht6g4"]
+[ext_resource type="Texture2D" uid="uid://cgj2yruo80n27" path="res://Roller skates #2.png" id="4_76sul"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bftpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tmkxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m870c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tskks"]
+size = Vector2(25, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nel1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ht6g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_76sul")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_85pk5"]
+radius = 34.0
+height = 122.0
+
+[node name="SpeedBonuses" type="Node2D" unique_id=253590335]
+
+[node name="Energized" type="Area2D" parent="." unique_id=1516559977]
+z_index = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Energized" unique_id=1568608933]
+scale = Vector2(0.09, 0.09)
+sprite_frames = SubResource("SpriteFrames_bftpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Energized" unique_id=921608734]
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_tskks")
+
+[node name="Rollerblades" type="Area2D" parent="." unique_id=271168713]
+z_index = 1
+position = Vector2(320, 632)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rollerblades" unique_id=280666328]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_nel1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rollerblades" unique_id=293222826]
+position = Vector2(-5, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_85pk5")
