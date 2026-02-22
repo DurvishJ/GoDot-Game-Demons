@@ -19,20 +19,23 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
-radius = 81.18895
-height = 310.0
+radius = 88.89666
+height = 313.66153
 
 [node name="Player" type="Area2D" unique_id=668391075]
+position = Vector2(22, 617)
 script = ExtResource("1_i3pqv")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2006413463]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=173318968]
-skew = 0.18675023
+position = Vector2(-1, 0)
+scale = Vector2(0.2, 0.2)
+skew = 0.10297442
 shape = SubResource("CapsuleShape2D_hqtel")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

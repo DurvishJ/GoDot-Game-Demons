@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://csgwur3y5p6es"]
+
+[ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://42pymon2i4o6" path="res://game.gd" id="1_feb5d"]
+[ext_resource type="PackedScene" uid="uid://bcsggvwfhjlql" path="res://chatty_customer.tscn" id="2_fc0e3"]
+
+[sub_resource type="Curve2D" id="Curve2D_7jktm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 48, 640, 0, 0, 0, 0, 48, 88, 0, 0, 0, 0, 352, 88, 0, 0, 0, 0, 352, 512, 0, 0, 0, 0, 424, 512, 0, 0, 0, 0, 424, 88, 0, 0, 0, 0, 728, 88, 0, 0, 0, 0, 728, 512, 0, 0, 0, 0, 792, 512, 0, 0, 0, 0, 792, 88, 0, 0, 0, 0, 1104, 88, 0, 0, 0, 0, 1104, 640, 0, 0, 0, 0, 984, 640, 0, 0, 0, 0, 984, 184, 0, 0, 0, 0, 920, 184, 0, 0, 0, 0, 920, 640, 0, 0, 0, 0, 608, 640, 0, 0, 0, 0, 608, 184, 0, 0, 0, 0, 536, 184, 0, 0, 0, 0, 536, 640, 0, 0, 0, 0, 240, 640, 0, 0, 0, 0, 240, 184, 0, 0, 0, 0, 168, 184, 0, 0, 0, 0, 168, 640, 0, 0, 0, 0, 48, 640)
+}
+point_count = 25
+
+[sub_resource type="Curve2D" id="Curve2D_ryrav"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 96, 512, 0, 0, 0, 0, 96, 128, 0, 0, 0, 0, 296, 128, 0, 0, 0, 0, 296, 576, 0, 0, 0, 0, 480, 576, 0, 0, 0, 0, 480, 96, 0, 0, 0, 0, 480, 576, 0, 0, 0, 0, 296, 576, 0, 0, 0, 0, 296, 128, 0, 0, 0, 0, 96, 128, 0, 0, 0, 0, 96, 512)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_eow3j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 672, 96, 0, 0, 0, 0, 672, 576, 0, 0, 0, 0, 864, 576, 0, 0, 0, 0, 864, 128, 0, 0, 0, 0, 1048, 128, 0, 0, 0, 0, 1048, 512, 0, 0, 0, 0, 1048, 128, 0, 0, 0, 0, 864, 128, 0, 0, 0, 0, 864, 576, 0, 0, 0, 0, 672, 576, 0, 0, 0, 0, 672, 96)
+}
+point_count = 11
+
+[node name="Game" type="Node" unique_id=780520153]
+script = ExtResource("1_feb5d")
+mob_scene = ExtResource("2_fc0e3")
+
+[node name="DeliveryTime" type="Timer" parent="." unique_id=834205061]
+one_shot = true
+
+[node name="EventPath" type="Path2D" parent="." unique_id=1768985199]
+visible = false
+curve = SubResource("Curve2D_7jktm")
+
+[node name="ChattyCustomer1" type="Path2D" parent="." unique_id=2016967698]
+curve = SubResource("Curve2D_ryrav")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ChattyCustomer1" unique_id=1826377938]
+position = Vector2(96, 512)
+rotation = -1.5707964
+
+[node name="ChattyCustomer2" type="Path2D" parent="." unique_id=32154879]
+curve = SubResource("Curve2D_eow3j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ChattyCustomer2" unique_id=139637246]
+position = Vector2(672, 96)
+rotation = 1.5707964
+
+[node name="Background" type="TextureRect" parent="." unique_id=1828188576]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_80nbo")
+expand_mode = 1
