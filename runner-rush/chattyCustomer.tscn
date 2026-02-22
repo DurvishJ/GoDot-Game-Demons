@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://tjgbsxsui0ym"]
+
+[ext_resource type="Script" uid="uid://dd5pl80mga114" path="res://chatty_customer.gd" id="1_81bnt"]
+[ext_resource type="Script" uid="uid://dp15k8qo3mucu" path="res://path_follow_2d.gd" id="1_k2af7"]
+[ext_resource type="Script" uid="uid://c4s8bclcit8dy" path="res://chattyCustomer1.gd" id="2_qphs4"]
+[ext_resource type="Texture2D" uid="uid://ddacma7dyqjqn" path="res://Chatty customer #1.png" id="2_s3jeq"]
+[ext_resource type="Texture2D" uid="uid://cfs0kyyd6lb55" path="res://Chatty customer #2.png" id="3_qphs4"]
+[ext_resource type="Script" uid="uid://c1amiqxqnoqqn" path="res://chattyCustomerWalk.gd" id="4_qphs4"]
+[ext_resource type="Script" uid="uid://ch0760koyi4l8" path="res://chattyCustomer2.gd" id="6_dxerm"]
+
+[sub_resource type="Curve2D" id="Curve2D_dxerm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 88, 504, 0, 0, 0, 0, 88, 128, 0, 0, 0, 0, 284.36365, 128, 0, 0, 0, 0, 284.36365, 576, 0, 0, 0, 0, 472.54547, 576, 0, 0, 0, 0, 472.54547, 112, 0, 0, 0, 0, 472.54547, 576, 0, 0, 0, 0, 284.36365, 576, 0, 0, 0, 0, 284.36365, 128, 0, 0, 0, 0, 88, 128, 0, 0, 0, 0, 88, 504)
+}
+point_count = 11
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81bnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s3jeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qphs4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s3jeq"]
+radius = 88.63635
+height = 546.6665
+
+[sub_resource type="Curve2D" id="Curve2D_81bnt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 664, 112, 0, 0, 0, 0, 664, 576, 0, 0, 0, 0, 856, 576, 0, 0, 0, 0, 856, 128, 0, 0, 0, 0, 1048, 128, 0, 0, 0, 0, 1048, 512, 0, 0, 0, 0, 1048, 128, 0, 0, 0, 0, 856, 128, 0, 0, 0, 0, 856, 576, 0, 0, 0, 0, 664, 576, 0, 0, 0, 0, 664, 112)
+}
+point_count = 11
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnr0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s3jeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qphs4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qphs4"]
+radius = 86.66699
+height = 546.66675
+
+[node name="chattyCustomer1" type="Node2D" unique_id=1688045635]
+script = ExtResource("1_81bnt")
+
+[node name="customer1" type="Path2D" parent="." unique_id=443488840]
+position = Vector2(17.955551, 0)
+scale = Vector2(0.9777778, 1)
+curve = SubResource("Curve2D_dxerm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="customer1" unique_id=1266052613]
+z_index = 1
+position = Vector2(88, 504)
+rotation = -1.5707964
+rotates = false
+script = ExtResource("1_k2af7")
+
+[node name="chattyCustomer1" type="Area2D" parent="customer1/PathFollow2D" unique_id=1885536311]
+rotation = 1.5707964
+scale = Vector2(0.15, 0.15)
+collision_layer = 0
+script = ExtResource("2_qphs4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="customer1/PathFollow2D/chattyCustomer1" unique_id=847769843]
+sprite_frames = SubResource("SpriteFrames_81bnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="customer1/PathFollow2D/chattyCustomer1" unique_id=1591482178]
+position = Vector2(-6.8181243, 0)
+shape = SubResource("CapsuleShape2D_s3jeq")
+
+[node name="customer2" type="Path2D" parent="." unique_id=2050502939]
+curve = SubResource("Curve2D_81bnt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="customer2" unique_id=999380245]
+position = Vector2(664, 112)
+rotation = 1.5707964
+rotates = false
+script = ExtResource("4_qphs4")
+
+[node name="chattyCustomer2" type="Area2D" parent="customer2/PathFollow2D" unique_id=1225597670]
+collision_layer = 0
+script = ExtResource("6_dxerm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="customer2/PathFollow2D/chattyCustomer2" unique_id=1411745972]
+rotation = -1.5707964
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_qnr0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="customer2/PathFollow2D/chattyCustomer2" unique_id=1611547450]
+position = Vector2(0, 1)
+rotation = -1.5707964
+scale = Vector2(0.15, 0.15)
+shape = SubResource("CapsuleShape2D_qphs4")
+
+[connection signal="body_entered" from="customer1/PathFollow2D/chattyCustomer1" to="." method="body_entered"]
+[connection signal="body_entered" from="customer1/PathFollow2D/chattyCustomer1" to="customer1/PathFollow2D/chattyCustomer1" method="body_entered"]
+[connection signal="body_entered" from="customer2/PathFollow2D/chattyCustomer2" to="." method="body_entered"]
+[connection signal="body_entered" from="customer2/PathFollow2D/chattyCustomer2" to="customer2/PathFollow2D/chattyCustomer2" method="body_entered"]

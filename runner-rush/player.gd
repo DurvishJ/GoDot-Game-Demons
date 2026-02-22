@@ -1,7 +1,5 @@
 extends CharacterBody2D # 1. Change this line
 
-signal hit
-
 @export var speed = 150 
 var screen_size 
 

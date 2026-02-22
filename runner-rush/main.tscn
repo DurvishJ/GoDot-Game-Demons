@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bcsggvwfhjlql" path="res://chatty_customer.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dnfhbtpeevx7g" path="res://player.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://tjgbsxsui0ym" path="res://chattyCustomer.tscn" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(40, 421)
@@ -29,6 +30,9 @@ size = Vector2(40, 425)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
 size = Vector2(1152, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(24, 128)
+
 [node name="Main" type="Node" unique_id=1273300211]
 script = ExtResource("1_1bvp3")
 mob_scene = ExtResource("2_lquwl")
@@ -46,6 +50,7 @@ position = Vector2(30, 615)
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=1563162057]
 position = Vector2(30, 615)
+collision_layer = 2
 
 [node name="Wall 1" type="CollisionShape2D" parent="Walls" unique_id=1476302391]
 position = Vector2(-10, -319.5)
@@ -78,3 +83,65 @@ shape = SubResource("RectangleShape2D_4c57u")
 [node name="Red Curtain" type="CollisionShape2D" parent="Walls" unique_id=470650172]
 position = Vector2(546, -571)
 shape = SubResource("RectangleShape2D_efxa6")
+
+[node name="Chatty Customer" parent="." unique_id=1688045635 instance=ExtResource("5_lquwl")]
+
+[node name="DeliveryTime" type="Timer" parent="." unique_id=2084364794]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1224992809]
+
+[node name="DeliveryTime" type="Label" parent="CanvasLayer" unique_id=46972878]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_right = 115.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Delivery Time"
+horizontal_alignment = 1
+
+[node name="Timer" type="Label" parent="CanvasLayer" unique_id=456166268]
+anchors_preset = -1
+anchor_left = 0.49956596
+anchor_top = 0.052469134
+anchor_right = 0.50043404
+anchor_bottom = 0.10185185
+offset_top = 9.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="Label" parent="CanvasLayer" unique_id=1872410020]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Finish" type="Area2D" parent="." unique_id=576125218]
+position = Vector2(24, 32)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=272783121]
+position = Vector2(1116, 544)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[connection signal="hit" from="Chatty Customer" to="." method="_on_chatty_customer_hit"]
+[connection signal="timeout" from="DeliveryTime" to="." method="_on_delivery_time_timeout"]
+[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
