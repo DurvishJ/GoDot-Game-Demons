@@ -1,13 +1,23 @@
 extends CharacterBody2D # 1. Change this line
 
-@export var speed = 150 
+@export var base_speed = 150
+var speed = 150
+var is_boosted = false 
 var screen_size 
+var can_move = true
+var is_stunned = false
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
 # 2. Use _physics_process for better collision handling
 func _physics_process(delta): 
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	var input_velocity = Vector2.ZERO 
 	if Input.is_action_pressed("move_right"):
 		input_velocity.x += 1
@@ -41,3 +51,27 @@ func start(pos):
 	global_position = pos # Moves player to the start point
 	show() # Makes player visible
 	$CollisionShape2D.disabled = false # Enables collision
+	
+func stun(duration):
+	if is_stunned:
+		return
+	
+	is_stunned = true
+	can_move = false
+	
+	await get_tree().create_timer(duration).timeout
+	
+	can_move = true
+	is_stunned = false
+
+func speed_boost(multiplier, duration):
+	if is_boosted:
+		return
+	
+	is_boosted = true
+	speed = base_speed * multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	speed = base_speed
+	is_boosted = false

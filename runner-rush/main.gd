@@ -11,7 +11,6 @@ var elapsed_time = 0.0
 func _ready() -> void:
 	get_tree().paused = true # This freezes everything initially
 
-
 func _process(delta: float) -> void:
 	if elapsed_time >= 45:
 		$LoseGame.play()

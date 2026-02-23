@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://btv4twubr24it"]
+
+[ext_resource type="Script" uid="uid://7ljvkttgfsws" path="res://sprite_spawner.gd" id="1_avp37"]
+
+[node name="sprite_spawner" type="Node2D" unique_id=1489576818]
+script = ExtResource("1_avp37")
+
+[node name="FirstSpawnLocation" type="ColorRect" parent="." unique_id=1773301684]
+offset_left = 48.0
+offset_top = 88.0
+offset_right = 168.0
+offset_bottom = 576.0
+color = Color(1, 1, 1, 0)
+
+[node name="SecondSpawnLocation" type="ColorRect" parent="." unique_id=1419527481]
+offset_left = 240.0
+offset_top = 88.0
+offset_right = 352.0
+offset_bottom = 640.0
+color = Color(1, 1, 1, 0)
+
+[node name="ThirdSpawnLocation" type="ColorRect" parent="." unique_id=785003606]
+offset_left = 424.0
+offset_top = 88.0
+offset_right = 544.0
+offset_bottom = 640.0
+color = Color(1, 1, 1, 0)
+
+[node name="FourthSpawnLocation" type="ColorRect" parent="." unique_id=2058097321]
+offset_left = 608.0
+offset_top = 88.0
+offset_right = 728.0
+offset_bottom = 640.0
+color = Color(1, 1, 1, 0)
+
+[node name="FifthSpawnLocation" type="ColorRect" parent="." unique_id=2096004040]
+offset_left = 792.0
+offset_top = 88.0
+offset_right = 920.0
+offset_bottom = 640.0
+color = Color(1, 1, 1, 0)
+
+[node name="SixthSpawnLocation" type="ColorRect" parent="." unique_id=472804659]
+offset_left = 984.0
+offset_top = 88.0
+offset_right = 1104.0
+offset_bottom = 576.0
+color = Color(1, 1, 1, 0)

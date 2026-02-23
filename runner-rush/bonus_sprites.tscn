@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://dy76s5285tnav"]
+[gd_scene format=3 uid="uid://cyqgxnao3cxne"]
 
-[ext_resource type="Script" uid="uid://p2q3khk0obuf" path="res://speed_bonuses.gd" id="1_76sul"]
-[ext_resource type="Texture2D" uid="uid://0piqqhbrboei" path="res://Feeling energergized #1.png" id="1_tmkxu"]
-[ext_resource type="Texture2D" uid="uid://b1ouvnhbense4" path="res://Feeling energergized #2 (1).png" id="2_m870c"]
-[ext_resource type="Texture2D" uid="uid://dv0qp25o5myuw" path="res://Roller skates #1.png" id="3_ht6g4"]
-[ext_resource type="Texture2D" uid="uid://cgj2yruo80n27" path="res://Roller skates #2.png" id="4_76sul"]
-[ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="7_tskks"]
+[ext_resource type="Script" uid="uid://p2q3khk0obuf" path="res://speed_bonuses.gd" id="1_npqvf"]
+[ext_resource type="Texture2D" uid="uid://0piqqhbrboei" path="res://Feeling energergized #1.png" id="2_f6ha7"]
+[ext_resource type="Texture2D" uid="uid://b1ouvnhbense4" path="res://Feeling energergized #2 (1).png" id="3_brsbd"]
+[ext_resource type="Texture2D" uid="uid://dv0qp25o5myuw" path="res://Roller skates #1.png" id="4_3dgeb"]
+[ext_resource type="Texture2D" uid="uid://cgj2yruo80n27" path="res://Roller skates #2.png" id="5_6ale1"]
+[ext_resource type="Texture2D" uid="uid://dvglirctf8amt" path="res://background_base.png" id="6_en2xa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bftpi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_tmkxu")
+"texture": ExtResource("2_f6ha7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_m870c")
+"texture": ExtResource("3_brsbd")
 }],
 "loop": true,
 "name": &"default",
@@ -28,10 +28,10 @@ size = Vector2(25, 60)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ht6g4")
+"texture": ExtResource("4_3dgeb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_76sul")
+"texture": ExtResource("5_6ale1")
 }],
 "loop": true,
 "name": &"default",
@@ -42,34 +42,33 @@ animations = [{
 radius = 34.0
 height = 122.0
 
-[node name="SpeedBonuses" type="Node2D" unique_id=253590335]
-script = ExtResource("1_76sul")
+[node name="BonusSprites" type="Node2D" unique_id=253590335]
+script = ExtResource("1_npqvf")
 
 [node name="Energized" type="Area2D" parent="." unique_id=1516559977]
 z_index = 2
-position = Vector2(152, 528)
 collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Energized" unique_id=1568608933]
-position = Vector2(16.000002, 8.000001)
+position = Vector2(-1.9073486e-06, -7.6293945e-06)
 scale = Vector2(0.09, 0.09)
 sprite_frames = SubResource("SpriteFrames_bftpi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Energized" unique_id=921608734]
-position = Vector2(16, 5)
 shape = SubResource("RectangleShape2D_tskks")
 
 [node name="Rollerblades" type="Area2D" parent="." unique_id=271168713]
 z_index = 1
-position = Vector2(320, 632)
+position = Vector2(-7.6293945e-06, 0)
 scale = Vector2(0.7, 0.7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rollerblades" unique_id=280666328]
+position = Vector2(7.6293945e-06, -2.861023e-06)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_nel1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rollerblades" unique_id=293222826]
-position = Vector2(-5, 7)
+position = Vector2(1.2397766e-05, -7.6293945e-06)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_85pk5")
 
@@ -77,7 +76,7 @@ shape = SubResource("CapsuleShape2D_85pk5")
 visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("7_tskks")
+texture = ExtResource("6_en2xa")
 expand_mode = 1
 
 [connection signal="body_entered" from="Energized" to="." method="_on_energized_body_entered"]

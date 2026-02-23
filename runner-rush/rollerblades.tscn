@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dv26i7kc3pllh"]
+
+[ext_resource type="Texture2D" uid="uid://dv0qp25o5myuw" path="res://Roller skates #1.png" id="1_a8468"]
+[ext_resource type="Script" uid="uid://p110pv8yqfs8" path="res://rollerblades.gd" id="1_pdp2o"]
+[ext_resource type="Texture2D" uid="uid://cgj2yruo80n27" path="res://Roller skates #2.png" id="2_pdp2o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k68et"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a8468")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pdp2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hcp1q"]
+radius = 34.0
+height = 122.0
+
+[node name="Rollerblades" type="Node2D" unique_id=2045684163]
+script = ExtResource("1_pdp2o")
+
+[node name="Rollerblades" type="Area2D" parent="." unique_id=1556917633]
+z_index = 1
+position = Vector2(-7.6293945e-06, 0)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rollerblades" unique_id=1410152939]
+position = Vector2(7.6293945e-06, -2.861023e-06)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_k68et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rollerblades" unique_id=482825462]
+position = Vector2(1.2397766e-05, -7.6293945e-06)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hcp1q")
+
+[connection signal="body_entered" from="Rollerblades" to="." method="_on_rollerblades_body_entered"]

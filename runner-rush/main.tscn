@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://drdo0bom3474a" path="res://freesound_community-game-over-arcade-6435.ogg" id="6_7mycd"]
 [ext_resource type="FontFile" uid="uid://c07631ptidhbq" path="res://fonts/Xolonium-Regular.ttf" id="7_272bh"]
 [ext_resource type="AudioStream" uid="uid://dpblefjd0ysn6" path="res://House In a Forest Loop.ogg" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://btv4twubr24it" path="res://sprite_spawner.tscn" id="9_4c57u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(40, 421)
@@ -213,6 +214,8 @@ stream = ExtResource("6_7mycd")
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=212237759]
 stream = ExtResource("8_5vw27")
 parameters/looping = false
+
+[node name="sprite_spawner" parent="." unique_id=1489576818 instance=ExtResource("9_4c57u")]
 
 [connection signal="hit" from="Chatty Customer" to="." method="_on_chatty_customer_hit"]
 [connection signal="timeout" from="DeliveryTime" to="." method="_on_delivery_time_timeout"]

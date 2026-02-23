@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://rnc0sv3qualu"]
+
+[ext_resource type="Script" uid="uid://p2q3khk0obuf" path="res://speed_bonuses.gd" id="1_mm7o7"]
+[ext_resource type="Texture2D" uid="uid://0piqqhbrboei" path="res://Feeling energergized #1.png" id="2_sry54"]
+[ext_resource type="Texture2D" uid="uid://b1ouvnhbense4" path="res://Feeling energergized #2 (1).png" id="3_h3rtu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bftpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sry54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h3rtu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tskks"]
+size = Vector2(25, 60)
+
+[node name="Energized" type="Node2D" unique_id=253590335]
+script = ExtResource("1_mm7o7")
+
+[node name="Energized" type="Area2D" parent="." unique_id=1516559977]
+z_index = 2
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Energized" unique_id=1568608933]
+position = Vector2(-1.9073486e-06, -7.6293945e-06)
+scale = Vector2(0.09, 0.09)
+sprite_frames = SubResource("SpriteFrames_bftpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Energized" unique_id=921608734]
+shape = SubResource("RectangleShape2D_tskks")
+
+[connection signal="body_entered" from="Energized" to="." method="_on_energized_body_entered"]
